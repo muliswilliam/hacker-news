@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './components/App';
-import setGlobalStyles from 'styles/globals';
+import App from 'components/App';
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store';
-
-setGlobalStyles();
+import GlobalStyle from './styles/globals';
 
 const renderApp = () => {
 	const initialState = {};
@@ -17,7 +15,8 @@ const renderApp = () => {
 
 	ReactDOM.render(
 		<Provider store={store}>
-			<Index />
+			<GlobalStyle/>
+			<App />
 		</Provider>,
 		document.getElementById('root')
 	);

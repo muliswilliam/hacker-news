@@ -1,8 +1,8 @@
 
 import { createGlobalStyle } from 'styled-components';
-import { colorsDark } from './palette';
+import { colorsDark } from 'styles/palette';
 
-const setGlobalStyles = () =>
+const GlobalStyle =
 	createGlobalStyle`
     * {
       box-sizing: border-box;
@@ -28,4 +28,4 @@ const setGlobalStyles = () =>
     }
   `;
 
-export default setGlobalStyles;
+export default GlobalStyle;

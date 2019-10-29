@@ -4,7 +4,7 @@ const getInitialState = () => ({
 	theme: 'dark'
 });
 
-const app = (state = getInitialState(), {type, payload}) => {
+const appReducer = (state = getInitialState(), {type, payload}) => {
 	switch (type) {
 		case actionTypes.SET_THEME:
 			return {
@@ -16,4 +16,4 @@ const app = (state = getInitialState(), {type, payload}) => {
 	}
 };
 
-export  default app;
+export  default appReducer;
