@@ -2,10 +2,10 @@ import React from 'react';
 import ListItem from 'components/ListItem';
 import { ListWrapper } from './styles';
 
-const List = () => {
+const List = ({ stories }) => {
 	return (
 		<ListWrapper>
-			<ListItem />
+			{stories.map(story => <ListItem {...story} key={story.id}/>)}
 		</ListWrapper>
 	)
 };

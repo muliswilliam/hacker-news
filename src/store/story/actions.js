@@ -22,7 +22,7 @@ const actions = {
         .getTopStoryIds()
         .then(storyIds => {
           dispatch(action(actionTypes.FETCH_STORY_IDS_SUCCESS, { storyIds }));
-          dispatch(actions.fetchStoryIds({ storyIds, page: 0 }));
+          dispatch(actions.fetchStories({ storyIds, page: 0 }));
 
           return storyIds;
         })
@@ -33,14 +33,14 @@ const actions = {
   },
   fetchStories: (payload = {}) => {
     return dispatch => {
-      dispatch(action(actionTypes.FETCH_STORIES_REQUEST));
+      dispatch(action(actionTypes.FETCH_STORIES_REQUEST, payload));
 
       const { storyIds, page } = payload;
 
       return hackerNewsApi
         .getStoriesByPage(storyIds, page)
         .then(stories => {
-          return dispatch(action(actionTypes.FETCH_STORIES_SUCCESS, stories));
+          return dispatch(action(actionTypes.FETCH_STORIES_SUCCESS, { stories }));
         })
         .then(err => {
           return dispatch(action(actionTypes.FETCH_STORIES_FAILURE, err));
