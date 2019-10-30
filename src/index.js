@@ -4,7 +4,6 @@ import App from 'components/App';
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import configureStore from './store';
-import GlobalStyle from './styles/globals';
 
 const renderApp = () => {
 	const initialState = {};
@@ -15,7 +14,6 @@ const renderApp = () => {
 
 	ReactDOM.render(
 		<Provider store={store}>
-			<GlobalStyle/>
 			<App />
 		</Provider>,
 		document.getElementById('root')

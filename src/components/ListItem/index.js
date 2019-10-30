@@ -1,27 +1,30 @@
 import React from 'react';
 
 import {Item, Title, Host, ExternalLink, Description, CommentLink} from './styles';
+import { getHostname } from '../../utils/hostname';
+import {ARTICLE_LINK, USER_LINK} from '../../utils/article-links';
+import {formatTimestamp} from '../../utils/time-ago';
 
 const LINK_REL = 'noopener noreferer nofollow';
 
-const ListItem = () => {
+const ListItem = ({ id, title, by, url, kids, score, time }) => {
 	return (
 		<Item>
-			<ExternalLink>
+			<ExternalLink href={url} rel={LINK_REL} target="_blank">
 				<Title>
-					The Developer Community
-					<Host>(gitconnect.com)</Host>
+					{title}
+					<Host>({getHostname(url)})</Host>
 				</Title>
 			</ExternalLink>
 			<Description>
-				900 points by{' '}
-				<CommentLink href="#" rel={LINK_REL} target="_blank">
-					Test User {' '}
+				{score} points by{' '}
+				<CommentLink href={USER_LINK + by} rel={LINK_REL} target="_blank">
+					{by} {' '}
 				</CommentLink>
-				1 hour ago
+				{ formatTimestamp(time * 1000)}
 				{' | '}
-				<CommentLink href="#" rel={LINK_REL} target="_blank">
-					42 comments
+				<CommentLink href={ARTICLE_LINK + id} rel={LINK_REL} target="_blank">
+					{kids ? kids.length: 0} comments
 				</CommentLink>
 			</Description>
 		</Item>

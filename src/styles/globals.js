@@ -1,6 +1,6 @@
 
 import { createGlobalStyle } from 'styled-components';
-import { colorsDark } from 'styles/palette';
+import { colorsDark, colorsLight} from 'styles/palette';
 
 const GlobalStyle =
 	createGlobalStyle`
@@ -14,7 +14,7 @@ const GlobalStyle =
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background-color: ${colorsDark.background};
+      background-color: ${props => (props.darkTheme ? colorsDark.background : colorsLight.background)};
     }
     ul {
       list-style: none;
